@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block page_title %} WELCOME{% endblock %}
+
+{% block page_content %}
+      <div class="container">
+      <h2>Enter information down below</h2>
+          {% if form_submitted %}
+          <div class="col-12">
+              <h2>Thank you for completing my form!</h2>
+          </div>
+          <div class="col-md-6">
+              <p> First Name:</p>
+          </div>
+          <div class="col-md-6">
+              <p> {{ request.form.get('first_name')}}</p>
+          </div>
+          <div class="col-md-6">
+              <p> Last Name:</p>
+          </div>
+          <div class="col-md-6">
+              <p> {{ request.form.get('last_name')}}</p>
+          </div>
+          <div class="col-md-6">
+              <p> Email:</p>
+          </div>
+          <div class="col-md-6">
+              <p> {{ request.form.get('email')}}</p>
+          </div>
+          <div class="col-md-6">
+              <p> Age:</p>
+          </div>
+          <div class="col-md-6">
+              <p> {{ request.form.get('age')}}</p>
+          </div>
+          <p><a href="{{ url_for('contact') }}">Complete form again</a> </p>
+          {% else %}
+    <form action="{{ url_for('contact') }}" method="POST">
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
+  </div>
+  <div class="mb-3">
+    <label for="first_name" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="first_name" name="first_name">
+  </div>
+    <div class="mb-3">
+    <label for="last_name" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="last_name" name="last_name">
+  </div>
+            <div class="mb-3">
+    <label for="age" class="form-label"> Age </label>
+    <input type="text" class="form-control" id="age" name="age">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+          {% endif %}
+    </div>
+{%  endblock %}
