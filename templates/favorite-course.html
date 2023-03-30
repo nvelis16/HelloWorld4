@@ -2,7 +2,5 @@
 {% block page_title %} WELCOME{% endblock %}
 {%block page_head %} Thank you for letting us know your favorite class{% endblock %}
 {% block page_content %}
-
 you entered your favorite courses as: {{request.args.get('subject')}}{{request.args.get('course_number')}}
-
 {% endblock %}
